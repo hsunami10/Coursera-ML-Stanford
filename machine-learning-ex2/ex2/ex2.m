@@ -91,10 +91,14 @@ pause;
 %  optimal parameters theta.
 
 %  Set options for fminunc
+% GradObj = 'on' -> means function provided will return both cost and
+% partial derivative term
+% MaxIter -> sets max number of iterations to run before it returns
 options = optimset('GradObj', 'on', 'MaxIter', 400);
 
 %  Run fminunc to obtain the optimal theta
 %  This function will return theta and the cost 
+% @(t) (...) is like lambda function - shorthanded function creation
 [theta, cost] = ...
 	fminunc(@(t)(costFunction(t, X, y)), initial_theta, options);
 
